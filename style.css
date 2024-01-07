@@ -1,0 +1,154 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    
+}
+
+header h1 {
+    margin-top: 10vh;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+table {
+    backdrop-filter: blur(10px);
+    margin-top: 2%;
+    max-width: 90vw;
+    border: 1px solid black;
+    height: 400px;
+    min-height: max-content;
+    margin: auto;
+        
+}
+.tablediv{
+    backdrop-filter: blur(10px);
+    margin-top: 2%;
+    max-width: 95%;
+    height: 450px;
+    margin: auto;
+    background-color: rgba(109, 165, 192, 0.5);
+    border-radius: 30px;
+    box-shadow: 0px 0px 30px rgb(25, 25, 25);
+    padding: 20px 20px 0px 20px;
+    margin-bottom: 30px;
+}
+
+td {
+    text-align: center;
+    border: 1px solid black;
+}
+
+.forms {
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 30px;
+    align-items: center;
+    width: 80%;
+    min-width: 360px;
+    max-width: 800px;
+    background-color: rgba(109, 165, 192, 0.5);
+    background-size: cover;
+    margin: auto;
+    border-radius: 30px;
+    box-shadow: 0px 0px 30px rgb(25, 25, 25);
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.form {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    #rotateMessage {
+        display: block;
+        /* Show the rotation message */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        background-color: antiquewhite;
+        padding: 20px;
+        border: 2px none black;
+        box-shadow: 0px 0px 10px black;
+        z-index: 9999;
+        /* Ensure it's on top of other content */
+        border-radius: 10px;
+    }
+
+    /* Apply semi-transparent overlay to the body content */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.647);
+        /* Semi-transparent black overlay */
+        backdrop-filter: blur(20px);
+        z-index: 9998;
+        /* Ensure it's below the rotation message */
+    }
+
+    body {
+        overflow: hidden;
+    }
+}
+.contact img{
+    width: 30px;
+    margin-left: 10px;
+}
+.contact{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(11,73,82,0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 50vh;
+    margin: auto;
+    width: 80%;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+
+}
+.summary{
+    position: relative;
+    backdrop-filter: blur(10px);
+    background-color: rgba(111, 192, 87, 0.624);
+    width: 340px;
+    margin: auto;
+    border-radius: 30px;
+    padding-top: 20px;
+    top: 0;
+    bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.summary p{
+    margin-left: 20px;
+    color: #f5d7db;
+    font-weight: 600;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    text-decoration: solid black 2px;
+}

@@ -4,50 +4,23 @@
       <title>time table</title>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-   <style>
-    body {
-	background-color: #ffffff;
-	mix-blend-mode: darken;
-}
-
-header h1 {
-	margin-top: 10%;
-	text-align: center;
-	color: black;
-	font-weight: bold;
-	font-family: sans-serif;
-}
-
-table {
-	margin-top: 2%;
-	width: max-content;
-	border: 1px solid black;
-	height: 300px;
-	margin-left: 23%;
-}
-
-td {
-	text-align: center;
-	border: 1px solid black;
-}
-
-   </style>
+        <link rel="stylesheet" href="style.css">
+        
    </head>
    <body>
       <header>
          <h1>COLLEGE TIME TABLE</h1>
       </header>
-
-      <form id="batchform" class="subjectForm">
-        <label>Choose The subject for sloat A :</label>
-            <select class="batch">
-                <option>Batch 1</option>
-                <option>Batch 2</option>
-            </select>
-            <input type="submit" value="Submit">
-    </form>
-
-        <form id="subjectFormA" class="subjectForm">
+      <div class="forms">
+        <form id="batchform" class="subjectForm form">
+            <label>Choose The subject for sloat A :</label>
+                <select class="batch">
+                    <option>Batch 1</option>
+                    <option>Batch 2</option>
+                </select>
+                <input type="submit" value="Submit">
+        </form>
+        <form id="subjectFormA" class="subjectForm form">
             <label>Choose The subject for sloat A :</label>
                 <select class="subject" data-slot="A">
                     <option>NA</option>
@@ -71,7 +44,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormB" class="subjectForm">
+        <form id="subjectFormB" class="subjectForm form">
             <label>Choose The subject for sloat B :</label>
                 <select class="subject" data-slot="B">
                     <option>NA</option>
@@ -95,7 +68,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormC" class="subjectForm">
+        <form id="subjectFormC" class="subjectForm form">
             <label>Choose The subject for sloat C :</label>
                 <select class="subject" data-slot="C">
                     <option>NA</option>
@@ -119,7 +92,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormD" class="subjectForm">
+        <form id="subjectFormD" class="subjectForm form">
             <label>Choose The subject for sloat D :</label>
                 <select class="subject" data-slot="D">
                     <option>NA</option>
@@ -143,7 +116,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormE" class="subjectForm">
+        <form id="subjectFormE" class="subjectForm form">
             <label>Choose The subject for sloat E :</label>
                 <select class="subject" data-slot="E">
                     <option>NA</option>
@@ -167,7 +140,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormF" class="subjectForm">
+        <form id="subjectFormF" class="subjectForm form">
             <label>Choose The subject for sloat F :</label>
                 <select class="subject" data-slot="F">
                     <option>NA</option>
@@ -191,7 +164,7 @@ td {
                 </select>
                 <input type="submit" value="Submit">
         </form>
-        <form id="subjectFormG" class="subjectForm">
+        <form id="subjectFormG" class="subjectForm form">
             <label>Choose The subject for sloat G :</label>
                 <select class="subject" data-slot="G">
                     <option>NA</option>
@@ -214,253 +187,26 @@ td {
                     <option>Engineering and graphics Design</option>
                 </select>
                 <input type="submit" value="Submit">
-        </form>     
-   </body>
-   <script>
-        
-            // Function to update the timetable on form submission
-            // Declare the timetable variable in a higher scope
-        let timetable = {};
-
-        // Function to update the timetable on form submission
-        function updateTimetable(event) {
-            event.preventDefault(); // Prevent form submission (to avoid page reload)
-
-            // Reset the timetable object
-            timetable = {};
-
-            // Iterate through each select element with class 'subject'
-            document.querySelectorAll('.subject').forEach(select => {
-                const slot = select.getAttribute('data-slot');
-                const selectedSubject = select.value;
-                timetable[slot] = selectedSubject;
-            });
-
-            // Log the timetable object to the console
-            console.log(timetable);
-
-            // Update the HTML content based on the timetable
-            batch()
-        }
-
-        // Function to update HTML content based on the timetable
-        function updateHTML() {
-                for (let r = 1; r < 6; r++) {
-                    let row = document.getElementById(`row-${r}`);
-                    if (row) {
-                        for (const key in timetable) {
-                            if (timetable[key] == 'NA') {
-                                let cell = row.querySelector(`#${key}`);
-                                if (cell) {
-                                    cell.innerHTML = '---';
-                                }
-                            }
-                            else{
-                                let cell = row.querySelector(`#${key}`);
-                                if(cell){
-                                    cell.innerHTML = `${timetable[key]}`
-                                    cell.style.backgroundColor = getRandomColor();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        
-        let batch1 = `
-        <table>
-         <thead>
-            <tr>
-               <td id="sub1"></td>
-               <td id="sub">8:00-8:50</td>
-               <td id="sub">8:50-9:40</td>
-               <td id="sub">9:45-10:35</td>
-               <td id="sub">10:40-11:30</td>
-               <td id="sub">11:35-12:25</td>
-               <td id="sub">12:30-1:20</td>
-               <td id="sub">1:25-2:15</td>
-               <td id="sub">2:20-3:10</td>
-               <td id="sub">3:10-4:00</td>
-               <td id="sub">4:00-4:50</td>
-            </tr>
-         </thead>
-         <tbody>
-            <tr id="row-1">
-               <td id="sub">DAY - 1</td>
-               <td colspan="2" id="A"></td>
-               <td id="F" colspan="2"></td>
-               <td id="G"></td>
-               <td id="p6"></td>
-               <td id="p7"></td>
-               <td id="p8"></td>
-               <td id="p9"></td>
-               <td id="p10"></td>
-            </tr>
-            <tr id="row-2">
-                <td id="sub">DAY - 2</td>
-                <td id="p11"></td>
-                <td id="p12"></td>
-                <td id="p13"></td>
-                <td id="p14"></td>
-                <td id="p15"></td>
-                <td id="B" colspan="2"></td>
-                <td id="G" colspan="2"></td>
-                <td id="A"></td>
-            </tr>
-            <tr id="row-3">
-               <td id="sub">DAY - 3</td>
-               <td id="C" colspan="2"></td>
-               <td id="A"></td>
-               <td id="D"></td>
-               <td id="B"></td>
-               <td id="p26"></td>
-               <td id="p27"></td>
-               <td id="p28"></td>
-               <td id="p29"></td>
-               <td id="p30"></td>
-            </tr>
-            <tr id="row-4">
-               <td id="sub">DAY - 4</td>
-               <td id="p31"></td>
-               <td id="p32"></td>
-               <td id="p33"></td>
-               <td id="p34"></td>
-               <td id="p35"></td>
-               <td id="D" colspan="2"></td>
-               <td id="B"></td>
-               <td id="E"></td>
-               <td id="C"></td>
-            </tr>
-            <tr id="row-5">
-               <td id="sub">DAY - 5</td>
-               <td id="E" colspan="2"></td>
-               <td id="C"></td>
-               <td id="F"></td>
-               <td id="D"></td>
-               <td id="p46"></td>
-               <td id="p47"></td>
-               <td id="p48"></td>
-               <td id="p49"></td>
-               <td id="p50"></td>
-            </tr>
-         </tbody>
-      </table>
-      `
-
-        let batch2 = `
-        <table>
-    <thead>
-       <tr>
-          <td id="sub1"></td>
-          <td id="sub">8:00-8:50</td>
-          <td id="sub">8:50-9:40</td>
-          <td id="sub">9:45-10:35</td>
-          <td id="sub">10:40-11:30</td>
-          <td id="sub">11:35-12:25</td>
-          <td id="sub">12:30-1:20</td>
-          <td id="sub">1:25-2:15</td>
-          <td id="sub">2:20-3:10</td>
-          <td id="sub">3:10-4:00</td>
-          <td id="sub">4:00-4:50</td>
-       </tr>
-    </thead>
-    <tbody>
-       <tr id="row-1">
-          <td id="sub">DAY - 1</td>
-          <td id="p1"></td>
-          <td id="p2"></td>
-          <td id="p3"></td>
-          <td id="p4"></td>
-          <td id="p5"></td>
-          <td colspan="2" id="A"></td>
-          <td id="F" colspan="2"></td>
-          <td id="G"></td>
-       </tr>
-       <tr id="row-2">
-           <td id="sub">DAY - 2</td>
-           <td id="B" colspan="2"></td>
-           <td id="G" colspan="2"></td>
-           <td id="A"></td>
-           <td id="p16"></td>
-           <td id="p17"></td>
-           <td id="p18"></td>
-           <td id="p19"></td>
-           <td id="p20"></td>
-       </tr>
-       <tr id="row-3">
-          <td id="sub">DAY - 3</td>
-          <td id="p21"></td>
-          <td id="p22"></td>
-          <td id="p23"></td>
-          <td id="p24"></td>
-          <td id="p25"></td>
-          <td id="C" colspan="2"></td>
-          <td id="A"></td>
-          <td id="D"></td>
-          <td id="B"></td>
-          
-       </tr>
-       <tr id="row-4">
-          <td id="sub">DAY - 4</td>
-          <td id="D" colspan="2"></td>
-          <td id="B"></td>
-          <td id="E"></td>
-          <td id="C"></td>
-          <td id="p36"></td>
-          <td id="p37"></td>
-          <td id="p38"></td>
-          <td id="p39"></td>
-          <td id="p40"></td>
-       </tr>
-       <tr id="row-5">
-          <td id="sub">DAY - 5</td>
-          <td id="p41"></td>
-          <td id="p42"></td>
-          <td id="p43"></td>
-          <td id="p44"></td>
-          <td id="p45"></td>
-          <td id="E" colspan="2"></td>
-          <td id="C"></td>
-          <td id="F"></td>
-          <td id="D"></td>
-       </tr>
-    </tbody>
- </table>`
-
-    function batch() {
-        var selectedBatch = document.querySelector('.batch').value;
-            if (selectedBatch == 'Batch 1'){
                 
-                document.body.innerHTML += batch1;
-                updateHTML()
-            }
+        </form>
+        </div> 
+    <div id="rotateMessage">
+        <p>Please rotate your device to landscape mode for a better experience.</p>
+    </div>
 
-            else{
-                document.body.innerHTML += batch2;
-                updateHTML()
-            }
-    }
-
-    function getRandomColor() {
-            const letters = '0123456789ABCDEF';
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
-
-
-        // Attach form submission event listener to the subjectForm forms
-        document.getElementById('subjectFormA').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormB').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormC').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormD').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormE').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormF').addEventListener('submit', updateTimetable);
-        document.getElementById('subjectFormG').addEventListener('submit', updateTimetable);
-        document.getElementById('batchform').addEventListener('submit', updateTimetable);
-        // Repeat the above line for other forms (subjectFormB, subjectFormC, etc.) as needed
-        </script>
-
+    <div class="summary">
+        <div>
+            <p>
+                Hay my name is Dineshwar from SRMIST 1st year B.Tech if any Bugs or Improvemts DM me
+            </p>
+        </div>
+        <div class="contact">
+            <p>Lets connect</p>
+            <div><a href="https://www.instagram.com/dinonomous/" target="_blank"><img src="images/instagram.png" alt=""></a></div>
+            <div><a href="https://t.me/Dinonomous" target="_blank"><img src="images/telegram.png" alt=""></a></div>
+            <div><a href="https://github.com/dinonomous" target="_blank"><img src="images/github.png" alt=""></a></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+   </body>
 </html>
